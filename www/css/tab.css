@@ -1,0 +1,10 @@
+.tab{
+	height: 50px;
+	width: 100%;
+	background-color: rgba(1,1,1,1);
+}
+
+#tab{
+	position:fixed;
+	bottom: 0;
+}

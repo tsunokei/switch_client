@@ -1,0 +1,34 @@
+.nav{
+	height: 40px;
+	width: 100%;
+	background-color: rgba(42,45,49,0.988);
+	color:white;
+
+}
+.nav p{
+	opacity: 0.7;
+}
+.nav .menu-logo{
+	height: 40px;
+	width: 20px;
+	float: left;
+	padding-top: 14px;
+	margin-left: 10px;
+
+}
+.nav .menu-logo img{
+	width: 100%;
+}
+.nav .switch-logo{
+	height: 40px;
+	width: 85px;
+	margin-left:auto;
+	/*padding-top: 10px;*/
+
+}
+
+.nav .switch-logo img{
+	height: 100%;
+}
+
+
