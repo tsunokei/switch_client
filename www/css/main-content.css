@@ -1,5 +1,5 @@
 .content{
-
+	padding-top: 100px;
 }
 
 .main-content{
@@ -36,6 +36,11 @@
 	width: 100px;
 	margin-bottom: 10px;
 	background-color:rgba(0,36,82,0.8);
+}
+.scheme{
+	margin: 0 auto;
+	margin-top: 10px;
+	width: 90%;
 }
 /*.inner1{
 	margin-bottom: 10px;

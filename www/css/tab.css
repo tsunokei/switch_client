@@ -1,10 +1,58 @@
-.tab{
-	height: 50px;
+.top-back{
+	position: fixed;
+	top:0;
+}
+.top-bar{
+	margin-top: 0px;
+	height: 100px;
+	background-color:#1976D2;
 	width: 100%;
-	background-color: rgba(1,1,1,1);
+	position: fixed;
+
+
+}
+.top-bar .subject{
+	/*height: 100px;*/
+	/*width: 20%;*/
+	position: absolute;
+	left: 15px;
+	bottom: 20px;
+	text-shadow: -1px -1px 4px black;
+}
+.top-bar .subject p{
+	font-size: 20px;
+	color: white;
+}
+.tab{
+	height: 40px;
+	width: 100%;
+	background-color: white;
+}
+.tab .tab-inner{
+	height: 40px;
+	width: 40px;
+	background-color:#1976D2;
+	opacity: 0.8;
 }
 
 #tab{
 	position:fixed;
 	bottom: 0;
+}
+#frame{
+
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	width: 100%;
+	box-shadow: 0 -0.01px 5px 0.1px;
+}
+
+.scheme{
+	background-color: white;
+	padding: 20px 0;
+	text-align: center;
+	margin: 16px auto;
+	width: 90%;
+
 }
