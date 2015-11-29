@@ -40,8 +40,8 @@
 				username = $("#name").val();
 				$("#name").val("");
 				$.ajax({
-					url:"http://localhost:3000/api/v1/users.json",
-					type:"POST",
+					url:"http://e6ff64da.ngrok.io/api/v1/auth/token.json",
+					type:"GET",
 					success: function(msg){
 						window.hoge = msg;
 					},
@@ -53,7 +53,6 @@
 			$("#receive").on("click",function(){
 				$("#get").val(username);
 			});
-
 		});
 		//$(function(){
 
