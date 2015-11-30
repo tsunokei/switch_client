@@ -56,6 +56,7 @@ p{
   margin-top: 4px;
   padding: 2px 4px;
   border-radius: 2px;
+  cursor: pointer;
 }
 .blank{
   height: 10%;
