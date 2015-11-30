@@ -22,6 +22,7 @@
             <h1>ログイン</h1>
           <div class="flex flex-xs-auto"></div>
         </div>
+        <div id="error_messages"></div>
         <label>ユーザー名またはメールアドレス</label>
         <input id="email_or_screen_name" placeholder="gamerinshaft">
         <label>パスワード</label>
@@ -56,7 +57,12 @@
 							localStorage.setItem("switch-site_url","")
 							location.href = "../api/index.html"
 						}else{
-							alert("error")
+							text = "<ul>";
+              messages = error.responseJSON.meta.errors.forEach(function(err){
+                text += "<li class='error'>" + err.message + "</li>";
+              });
+              text += "</ul>"
+              $("#error_messages").html(text);
 						}
 					}
 				});

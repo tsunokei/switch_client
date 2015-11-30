@@ -22,6 +22,7 @@
         </div>
         <h1>404 Not Found.</h1>
         <p>APIサーバーが見つけられませんでした。<br>正しいサイト名を入力し直して下さい。</p>
+        <div id="error_messages"></div>
         <input id="url" placeholder="http://example.com">
         <div id="submit" class="submit">送信</div>
         <div class="blank"></div>
@@ -39,12 +40,17 @@
             localStorage.setItem("switch-auth_token",msg["response"]["auth_token"]);
             location.href = "../signup/index.html"
           },
-          error: function(){
+          error: function(error){
             if(error.status == 404){
               localStorage.setItem("switch-site_url","")
-              location.href = "../api/index.html"
+              $("#error_messages").html("<ul><li class='error'>URLが誤っています</li></ul>");
             }else{
-              alert("no name!!!");
+              text = "<ul>";
+              messages = error.responseJSON.meta.errors.forEach(function(err){
+                text += "<li class='error'>" + err.message + "</li>";
+              });
+              text += "</ul>"
+              $("#error_messages").html(text);
             }
           }
         });
