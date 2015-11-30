@@ -38,6 +38,7 @@
               <h1>ユーザー登録</h1>
             <div class="flex flex-xs-auto"></div>
           </div>
+          <div id="error_messages"></div>
           <label>ユーザー名</label>
           <input id="screen_name" placeholder="gamerinshaft">
           <label>メールアドレス</label>
@@ -73,8 +74,18 @@
               success: function(msg){
                 location.href = "../index.html"
               },
-              error: function(msg, hoge){
-                alert("error");
+              error: function(error){
+                if(error.status == 404){
+                  localStorage.setItem("switch-site_url","")
+                  location.href = "../api/index.html"
+                }else{
+                  text = "<ul>";
+                  messages = error.responseJSON.meta.errors.forEach(function(err){
+                    text += "<li class='error'>" + err.message + "</li>";
+                  });
+                  text += "</ul>"
+                  $("#error_messages").html(text);
+                }
               }
             });
           }else{
