@@ -5,7 +5,6 @@
 	<meta name = "viewport" content = "width=device-width, height=device-height,initial-scale=1,maximum-scale=1 ,user-scalable = no">
 	<!-- <meta http-equiv = "refresh" content = " 10; URL = home.html"> -->
 	<script src = "components/loader.js"></script>
-	<script src = "components/jquery.cookie.js"></script>	
 	<link rel = "stylesheet" href = "components/loader.css">
 	<link rel = "stylesheet" href = "css/style.css">
 	<link rel = "stylesheet" href = "css/nav.css">
@@ -48,12 +47,14 @@
 					}
 				});
 			});
+			lauth_token = localStorage.getItem("auth_token");
 			$("#receive").on("click",function(){
-				var cauth_token = localStorage.getItem("auth_token");
-				console.log(cauth_token);
-				$("#get").val(cauth_token);
+				console.log(lauth_token);
+				$("#get").val(lauth_token);
 			});
-
+			if(lauth_token){
+				alert("きたことありますね");
+			}
 
 		});
 		
