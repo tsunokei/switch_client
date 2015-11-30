@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "ja">
+<head>
+	<meta charset = "UTF-8">
+	<meta name = "viewport" content = "width=device-width, height=device-height,initial-scale=1,maximum-scale=1 ,user-scalable = no">
+	<!-- <meta http-equiv = "refresh" content = " 10; URL = home.html"> -->
+	<script src = "components/loader.js"></script>
+	<link rel = "stylesheet" href = "components/loader.css">
+	<link rel = "stylesheet" href = "css/style.css">
+	<link rel = "stylesheet" href = "css/nav.css">
+	<link rel = "stylesheet" href = "css/main-content.css">
+	<link rel = "stylesheet" href = "css/helper.css">
+	<script>
+		document.addEventListener("deviceready",onDeviceReady,false);
+		function onDeviceReady(){
+			console.log("Cordova is ready");
+		}
+	</script>
+</head>
+<body>
+	<div class = "image-back">
+		<div class = "lording-image">
+			<img src = "lording.gif">
+		</div>
+		<h1>読み込み中です...</h1>
+	</div>
+	<div class = "link">
+		<div class = "link-inner">
+			<a href = "./login/index.html">login.htmlへ</a>
+		</div>
+		<div class = "link-inner">
+			<a href = "./home/index.html">home.htmlへ</a>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$.ajax({
+				url: "https://api.github.com/users/gamerinshaft/repos",
+				type: "GET",
+				success: function(msg){
+			        window.hoge = msg;
+				}
+			})
+			console.log("hello,world");
+		});
+	</script>
+</body>
+</html>
