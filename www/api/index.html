@@ -31,7 +31,6 @@
     <script>
       $("#submit").on("click",function(){
         site_url = $("#url").val()
-        console.log(site_url)
         $.ajax({
           url: "" + site_url + "/api/v1/auth/token.json",
           type:"GET",
