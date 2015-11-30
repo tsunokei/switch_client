@@ -124,7 +124,12 @@
                 location.href = "./login/index.html"
               },
               error: function(){
-                alert("error!")
+                if(error.status == 404){
+                  localStorage.setItem("switch-site_url","")
+                  location.href = "../api/index.html"
+                }else{
+                  alert("error!")
+                }
               }
             });
         });

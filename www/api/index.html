@@ -40,7 +40,12 @@
             location.href = "../signup/index.html"
           },
           error: function(){
-            alert("no name!!!");
+            if(error.status == 404){
+              localStorage.setItem("switch-site_url","")
+              location.href = "../api/index.html"
+            }else{
+              alert("no name!!!");
+            }
           }
         });
       })
