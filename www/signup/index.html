@@ -18,6 +18,7 @@
               localStorage.setItem("switch-auth_token",msg["response"]["auth_token"]);
             },
             error: function(){
+              localStorage.setItem("switch-site_url","")
               location.href = "../api/index.html"
             }
           });
