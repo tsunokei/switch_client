@@ -15,8 +15,24 @@
 				console.log("Cordova is ready");
 			}
       if(localStorage.getItem('switch-site_url')){
-        if(localStorage.getItem('switch-auth_token')){
+        if(!localStorage.getItem('switch-auth_token')){
           location.href = "./login/index.html"
+        }else{
+          site_url = localStorage.getItem('switch-site_url')
+          auth_token = localStorage.getItem('switch-auth_token')
+          $.ajax({
+            url: site_url + "/api/v1/user/info.json",
+            type:"GET",
+            data: {
+              "auth_token": auth_token
+            },
+            success: function(msg){
+              console.log(msg)
+            },
+            error: function(){
+              location.href = "./signup/index.html"
+            }
+          });
         }
       }else{
         location.href = "./api/index.html"
@@ -91,6 +107,28 @@
 			</div>
 		</div>
 		<!-- main-content -->
-		<a href = "hometab.html">tabホーム</a>
+    <a href = "hometab.html">tabホーム</a>
+    <div id="logout">logout</div>
+    <script>
+      $(function(){
+        $("#logout").on("click",function(){
+          site_url = localStorage.getItem('switch-site_url')
+          $.ajax({
+              url: site_url + "/api/v1/auth/logout.json",
+              type:"DELETE",
+              data: {
+                "auth_token": localStorage.getItem("switch-auth_token")
+              },
+              success: function(msg){
+                localStorage.setItem("switch-auth_token","")
+                location.href = "./login/index.html"
+              },
+              error: function(){
+                alert("error!")
+              }
+            });
+        });
+      });
+    </script>
 	</body>
 </html>
