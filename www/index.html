@@ -14,11 +14,12 @@
 			function onDeviceReady(){
 				console.log("Cordova is ready");
 			}
-      if(localStorage.getItem('auth_token')){
-        console.log('auth_token is existing')
+      if(localStorage.getItem('switch-site_url')){
+        if(localStorage.getItem('switch-auth_token')){
+          location.href = "./login/index.html"
+        }
       }else{
-        console.log("kitenai")
-        location.href = "./login/index.html"
+        location.href = "./api/index.html"
       }
 		</script>
 	</head>
