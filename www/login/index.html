@@ -4,7 +4,7 @@
 	<meta charset = "UTF-8">
 	<meta name = "viewport" content = "width=device-width, height=device-height,initial-scale=1,maximum-scale=1 ,user-scalable = no">
 	<!-- <meta http-equiv = "refresh" content = " 10; URL = home.html"> -->
-	<script src = "components/loader.js"></script>
+	<script src = "../components/loader.js"></script>
 	<link rel = "stylesheet" href = "components/loader.css">
 	<link rel = "stylesheet" href = "css/style.css">
 	<link rel = "stylesheet" href = "css/nav.css">
@@ -36,7 +36,7 @@
 				username = $("#name").val();
 				$("#name").val("");
 				$.ajax({
-					url:"http://95d6ccd0.ngrok.io/api/v1/auth/token.json",
+					url:"http://f5792902.ngrok.io/api/v1/auth/token.json",
 					type:"GET",
 					success: function(msg){
 						window.hoge = msg;
