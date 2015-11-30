@@ -7,91 +7,61 @@
 	<script src = "../components/loader.js"></script>
 	<link rel = "stylesheet" href = "../components/loader.css">
 	<link rel = "stylesheet" href = "../css/style.css">
-	<link rel = "stylesheet" href = "../css/nav.css">
-	<link rel = "stylesheet" href = "../css/main-content.css">
 	<link rel = "stylesheet" href = "../css/helper.css">
+	<link rel = "stylesheet" href = "../css/login.css">
 	<script type="text/JavaScript">
-	</script>
-	<script>
- 		lauth_token = localStorage.getItem("auth_token");
-		if(lauth_token){
-			$(function(){
-				$("#submit").on("click",function(){
-					username = $("#name").val();
-					$("#name").val("");
-					$.ajax({
-						url:"http://f5792902.ngrok.io/api/v1/auth/token.json",
-						type:"GET",
-						success: function(msg){
-							window.hoge = msg;
-							localStorage.setItem("auth_token",msg["response"]["auth_token"]);
-						},
-						error: function(){
-							alert("no name!!!");
-						}
-					});
-				});
-				lauth_token = localStorage.getItem("auth_token");
-				$("#receive").on("click",function(){
-					console.log(lauth_token);
-					$("#get").val(lauth_token);
-				});
-			});
-		}else{
-				// location.href = "../home/home.html"
-		}
-
-		//$(function(){
-
-			//$("#submit").on("click", function(){//idがsubmitのものについて、clickしたときに対するfunction
-			//	username = $("#name").val();//idがnameであるもののvalueをusernameに格納する
-			//	$("#name").val("");//usernameに格納したら、フォームの中身を空っぽにする
-			//	$.ajax({
-			//		url: "https://api.github.com/users/" + username + "/repos",
-			//		type: "GET",
-			//		success: function(msg){//githubのリポジトリからとってきたものをhogeに格納
-			//	        window.hoge = msg;
-			//		},
-			//		error: function(){
-			//			alert("no name!");
-			//		}
-			//	});
-			//	var element = $('#frm [name=name]').val();
-			//});
-		//});ここまで
-
-
-			// $.ajax({
-			// 	url: "https://api.github.com/users/gamerinshaft/repos",
-			// 	type: "GET",
-			// 	success: function(msg){
-			//         window.hoge = msg;
-			// 	}
-			// var element = $('#frm [name=name]').val();
-
-			// console.log("element");
-			//  })
-			// console.log("hello,world");
-
 	</script>
 </head>
 <body>
-	<div class = "image-back">
-		<div class = "lording-image">
-			<img src = "../lording.gif">
-		</div>
-		<h1>読み込み中です...</h1>
-	</div>
-	<div class = "form">
-		<p>
-			username:<input type ="text" id="name" name ="name" size ="40">
-		</p>
-			<p id="submit">送信</p>
-		<p>auth_token:<input type = "text" id="get" name ="get" size ="40">
-		</p>
-			<p id="receive">受信</p>
-	</div>
-	<a href="../api/index.html">api</a>
-	<a href="../signup/index.html">signup</a>
+	<div class="container max-h">
+    <div class="column max-h">
+      <div class="flex flex-xs-auto"></div>
+      <div class="frame z1">
+        <div class="row">
+          <div class="flex flex-xs-auto"></div>
+            <h1>ログイン</h1>
+          <div class="flex flex-xs-auto"></div>
+        </div>
+        <label>ユーザー名またはメールアドレス</label>
+        <input id="email_or_screen_name" placeholder="gamerinshaft">
+        <label>パスワード</label>
+        <input id="password" type="password" placeholder="password">
+        <a href="../login/index.html">ログインはこちら</a>
+        <div id="submit" class="submit">送信</div>
+        <div class="blank"></div>
+      </div>
+      <div class="flex flex-xs-auto"></div>
+    </div>
+  </div>
+	<script>
+		$(function(){
+			$("#submit").on("click",function(){
+				site_url = localStorage.getItem('switch-site_url')
+				identifier = $("#email_or_screen_name").val();
+				password = $("#password").val();
+				console.log(password)
+				$.ajax({
+					url: site_url + "/api/v1/auth/login.json",
+					type: "POST",
+					data: {
+						"email_or_screen_name": identifier,
+						"password": password
+					},
+					success: function(msg){
+						localStorage.setItem("switch-auth_token",msg["response"]["auth_token"]);
+						location.href = "../index.html"
+					},
+					error: function(){
+						alert("error!")
+					}
+				});
+			});
+			lauth_token = localStorage.getItem("auth_token");
+			$("#receive").on("click",function(){
+				console.log(lauth_token);
+				$("#get").val(lauth_token);
+			});
+		});
+	</script>
 </body>
 </html>
