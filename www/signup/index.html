@@ -9,11 +9,52 @@
     <link rel = "stylesheet" href = "../css/helper.css">
     <link rel = "stylesheet" href = "../css/signup.css">
     <script>
+      if(localStorage.getItem("switch-site_url")){
+        if(!localStorage.getItem("switch-auth_token")){
+          $.ajax({
+            url: "" + localStorage.getItem("switch-site_url") + "/api/v1/auth/token.json",
+            type:"GET",
+            success: function(msg){
+              localStorage.setItem("switch-auth_token",msg["response"]["auth_token"]);
+            },
+            error: function(){
+              location.href = "../api/index.html"
+            }
+          });
+        }
+      }else{
+        location.href = "../api/index.html"
+      }
     </script>
   </head>
   <body>
-    <div class="container">
-    <h1>ユーザー登録</h1>
+    <div class="container max-h">
+      <div class="column max-h">
+        <div class="flex flex-xs-auto"></div>
+        <div class="frame z1">
+          <div class="row">
+            <div class="flex flex-xs-auto"></div>
+              <h1>ユーザー登録</h1>
+            <div class="flex flex-xs-auto"></div>
+          </div>
+          <label>ユーザー名</label>
+          <input id="screen_name" placeholder="gamerinshaft">
+          <label>メールアドレス</label>
+          <input id="email" placeholder="gamerinshaft@example.com">
+          <label>メールアドレス(確認用)</label>
+          <input id="email_confirm" placeholder="gamerinshaft@example.com">
+          <label>パスワード</label>
+          <input id="password" type="password" placeholder="password">
+          <div id="submit" class="submit">送信</div>
+          <div class="blank"></div>
+        </div>
+        <div class="flex flex-xs-auto"></div>
+      </div>
     </div>
+    <script>
+      $(function(){
+        $("#auth_token").val(""+localStorage.getItem("switch-auth_token"))
+      })
+    </script>
   </body>
 </html>
