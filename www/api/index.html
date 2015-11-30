@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang = "ja">
+  <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, height=device-height,initial-scale=1,maximum-scale=1 ,user-scalable = no">
+    <script src = "../components/loader.js"></script>
+    <link rel = "stylesheet" href = "../components/loader.css">
+    <link rel = "stylesheet" href = "../css/style.css">
+    <link rel = "stylesheet" href = "../css/helper.css">
+    <link rel = "stylesheet" href = "../css/api.css">
+    <script>
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="column max-h">
+        <div class="flex flex-xs-auto"></div>
+        <div class="row">
+          <div class="flex flex-xs-auto"></div>
+          <img src="https://robohash.org/my-own-slug.png?size=300x300">
+          <div class="flex flex-xs-auto"></div>
+        </div>
+        <h1>404 Not Found.</h1>
+        <p>APIサーバーが見つけられませんでした。<br>正しいサイト名を入力し直して下さい。</p>
+        <input id="url" placeholder="http://example.com">
+        <div id="submit" class="submit">送信</div>
+        <div class="blank"></div>
+        <div class="flex flex-xs-auto"></div>
+      </div>
+    </div>
+    <script>
+      $("#submit").on("click",function(){
+        site_url = $("#url").val()
+        $.ajax({
+          url: "" + site_url + "/api/v1/auth/token.json",
+          type:"GET",
+          success: function(msg){
+            localStorage.setItem("switch-site_url", "" + site_url)
+            localStorage.setItem("switch-auth_token",msg["response"]["auth_token"]);
+            location.href = "../signup/index.html"
+          },
+          error: function(){
+            alert("no name!!!");
+          }
+        });
+      })
+    </script>
+  </body>
+</html>
