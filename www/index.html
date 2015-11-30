@@ -14,6 +14,12 @@
 			function onDeviceReady(){
 				console.log("Cordova is ready");
 			}
+      if(localStorage.getItem('auth_token')){
+        console.log('auth_token is existing')
+      }else{
+        console.log("kitenai")
+        location.href = "./login/index.html"
+      }
 		</script>
 	</head>
 	<body>

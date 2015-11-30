@@ -14,7 +14,7 @@
 	</script>
 	<script>
  		lauth_token = localStorage.getItem("auth_token");
-		if(lauth_token){			 		
+		if(lauth_token){
 			$(function(){
 				$("#submit").on("click",function(){
 					username = $("#name").val();
@@ -38,13 +38,13 @@
 				});
 			});
 		}else{
-				location.href = "../home/home.html"
+				// location.href = "../home/home.html"
 		}
 
 		//$(function(){
 
 			//$("#submit").on("click", function(){//idがsubmitのものについて、clickしたときに対するfunction
-			//	username = $("#name").val();//idがnameであるもののvalueをusernameに格納する			
+			//	username = $("#name").val();//idがnameであるもののvalueをusernameに格納する
 			//	$("#name").val("");//usernameに格納したら、フォームの中身を空っぽにする
 			//	$.ajax({
 			//		url: "https://api.github.com/users/" + username + "/repos",
